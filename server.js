@@ -19,7 +19,7 @@ app.get('/', function(request, response) {
 
 app.get('/api/timestamp/:date_string', function(req, res) {
   let date = req.params.date_string;
-  res.json({"unix": moment(date).valueOf(), "utc": moment(date).format('ddd, D MMM YYYY')})
+  res.json({"unix": moment(date).valueOf(), "utc": moment(date).format('ddd, D MMM YYYY kk:mm:ss z')})
   
 });
 
