@@ -3,6 +3,7 @@
 
 // init project
 var express = require('express');
+const moment = require('moment')
 var app = express();
 
 // we've started you off with Express, 
@@ -17,6 +18,8 @@ app.get('/', function(request, response) {
 });
 
 app.get('/api/timestamp/:date_string', function(req, res) {
+  let date = req.params.date_string;
+  res.json({"unix": moment(date).valueOf(), "utc": moment(date).format('ddd, D MMM YYYY')})
   
 });
 
