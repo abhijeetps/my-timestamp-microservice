@@ -18,8 +18,14 @@ app.get('/', (request, response) => {
 
 app.get('/api/timestamp/:date_string', (req, res) => {
   try {
-    let date = new Date(req.params.date_string);
-    res.json({"unix": date.getTime(), "utc": date.toUTCString()})
+    if(isNaN(req.params.date_string)) {
+      let date = new Date(req.params.date_string);
+      res.json({"unix": date.getTime(), "utc": date.toUTCString()})
+    }
+    else {
+      let date = new Date(req.params.date_string * 1000);
+      res.json({"unix": date.getTime(), "utc": date.toUTCString()})
+    }
   }
   catch (error) {
     res.json({"error": "Invalid Date"})
