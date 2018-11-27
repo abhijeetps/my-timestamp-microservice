@@ -12,11 +12,11 @@ var app = express();
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get('/', function(request, response) {
+app.get('/', (request, response) => {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/api/timestamp/:date_string', function(req, res) {
+app.get('/api/timestamp/:date_string', (req, res) => {
   try {
     let date = new Date(req.params.date_string);
     res.json({"unix": date.getTime(), "utc": date.toUTCString()})
